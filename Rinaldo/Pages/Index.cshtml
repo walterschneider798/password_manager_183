@@ -1,0 +1,58 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="loginBox">
+                <h2>Login</h2>
+                <label>
+                    E-Mail
+                    <input type="text" id="emailInput" />
+                </label>
+                <label>
+                    Password
+                    <input type="password" id="passwordInput" />
+                </label>
+                <p class="text-warning" id="loginMessage"></p>
+                <button type="button" id="loginButton">Anmelden</button><button type="button" id="createNewUser">Create new user</button>
+                <div class="newUserBox">
+                    <h2>New User</h2>
+                    <label>
+                        E-Mail
+                        <input type="text" id="newEmailInput" />
+                    </label>
+                    <label>
+                        Password
+                        <input type="password" id="newPasswordInput" />
+                    </label>
+                    <p class="text-warning" id="registerMessage"></p>
+                    <button id="createUser">Create user</button>
+                </div>
+
+            </div>
+            <div class="passwordList">
+                <div class="userInfo">
+                    <button type="button" id="logout">Logout</button>
+                </div>
+                <div class="addPasswordBox">
+                    <h2>Add Password</h2>
+                    <label>
+                        Name
+                        <input type="text" id="passwordName" />
+                    </label>
+                    <label>
+                        Password
+                        <input type="password" id="passwordValue" />
+                    </label>
+                    <button type="button">Add Password</button>
+                </div>
+                <h2>All Passwords</h2>
+                <ul class="passwordUl">
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
