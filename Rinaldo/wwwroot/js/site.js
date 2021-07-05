@@ -36,11 +36,13 @@ $(document).ready(function () {
 
                 },
                 error: function () {
+                    $(".loginBox").fadeIn();
                     localStorage.clear();
                 }
             });
     }
     else {
+        $(".loginBox").fadeIn();
         $("#loginButton").click(function () {
             var email = $("#emailInput").val();
             var password = $("#passwordInput").val();

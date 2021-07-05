@@ -179,3 +179,7 @@ button:hover {
 .newUserBox {
     margin-top:50px;
 }
+
+.loginBox {
+    display:none;
+}
