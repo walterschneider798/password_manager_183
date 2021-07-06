@@ -35,9 +35,17 @@ namespace Rinaldo.Controllers
 
             var user = AuthenticateUser(email, password);
 
-            var tempPassword = user.Password;
+            if (user == null)
+            {
+                return null;
+            }
 
-            var encryptedPassword = DataEncryptor.Encrypt(addedPassword, tempPassword.Substring(16));
+            if (password.Length > 16)
+            {
+                password = password.Substring(16);
+            }
+
+            var encryptedPassword = DataEncryptor.Encrypt(addedPassword, password);
 
 
             var toAddPassword = new PasswordModel(Guid.NewGuid().ToString(), user.ID, name, encryptedPassword);
@@ -76,10 +84,13 @@ namespace Rinaldo.Controllers
             }
             var userPasswordList = passwordList.Where(x => x.UserId == authenticatedUser.ID);
 
+            if (password.Length > 16)
+            {
+                password = password.Substring(16);
+            }
             foreach (var item in userPasswordList)
             {
-                var tempPassword = authenticatedUser.Password;
-                var decrypted = DataEncryptor.Decrypt(item.Password, tempPassword.Substring(16));
+                var decrypted = DataEncryptor.Decrypt(item.Password, password);
                 item.Password = decrypted;
             }
 
